@@ -8,7 +8,7 @@ import HelpOutLineIcon from '@material-ui/icons/HelpOutline';
 const Header = () => {
     return (
         <HeaderContainer>
-            
+
             <HeaderLeft>
                 <HeaderAvatar />
                 <AccessTimeIcon />
@@ -20,7 +20,7 @@ const Header = () => {
             </HeaderSearch>
 
             <HeaderRight>
-                <HelpOutLineIcon/>
+                <HelpOutLineIcon />
             </HeaderRight>
         </HeaderContainer>
     );
@@ -38,7 +38,8 @@ const HeaderContainer = styled.div`
     background-color: var(--slack-color);
     color: white;
 
-`
+`;
+
 const HeaderLeft = styled.div`
     flex: 0.3;
     display: flex;
@@ -49,7 +50,9 @@ const HeaderLeft = styled.div`
         margin-left: auto;
         margin-right: 30px;
 }
-`
+`;
+
+
 const HeaderAvatar = styled(Avatar)`
     cursor: pointer;
 
@@ -57,7 +60,7 @@ const HeaderAvatar = styled(Avatar)`
         opacity: .8;
     }
     
-`
+`;
 const HeaderSearch = styled.div`
     flex: 0.4;
     opacity: 1;
@@ -75,13 +78,14 @@ const HeaderSearch = styled.div`
         text-align: center;
         min-width: 30vw;
     }
-`
+`;
 
-const HeaderRight =styled.div`
+const HeaderRight = styled.div`
     flex: 0.3;
     display: flex;
     >.MuiSvgIcon-root{
         margin-left: auto;
         margin-right: 20px;
 }
-`
+
+`;
