@@ -1,8 +1,6 @@
-used technology:
- <!-- React Js
+##used technology.
 
- Styled Component,
-
- Meterial UI
-
- React Router -->
+ React Js.
+ Styled Component.
+ Meterial UI.
+ React Router.
