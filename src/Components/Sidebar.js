@@ -36,15 +36,12 @@ const Sidebar = () => {
             <hr />
             <SidebarOption Icon={Add} addChannelOption title='Add Channel' />
 
-            {channels?.docs.map(doc => 
-                // console.log(doc.data().name, doc.id)
+            {channels?.docs.map(doc =>
                 <SidebarOption
                     key={doc.id}
                     id={doc.id}
-                    addChannelOption
                     title={doc.data().name}
                 />
-
             )}
         </SidebarContainer>
     );
@@ -54,6 +51,7 @@ export default Sidebar;
 
 const SidebarContainer = styled.div`
     background-color: var(--slack-color);
+    overflow: scroll;
     color: white;
     flex: 0.3;
     border-top: 1px solid #49274b;
@@ -63,6 +61,10 @@ const SidebarContainer = styled.div`
         margin: 10px 0;
         border: 1px solid #49274b;
     }
+    ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
 `;
 
 const SidebarHeader = styled.div`

@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import Header from './Components/Header';
 import Sidebar from './Components/Sidebar';
+import Chat from './Components/Chat';
 
 function App() {
   return (
@@ -12,10 +13,10 @@ function App() {
         <Header />
 
         <AppBody>
-        <Sidebar/>
+          <Sidebar />
           <Switch>
             <Route path="/">
-
+              <Chat />
             </Route>
           </Switch>
         </AppBody>
@@ -26,7 +27,7 @@ function App() {
 
 export default App;
 
-const AppBody =styled.div`
+const AppBody = styled.div`
   display: flex;
   height: 100vh;
 `;
