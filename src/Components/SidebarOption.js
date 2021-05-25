@@ -1,25 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
+import { db } from '../firebase';
 
-const SidebarOption = ({title,Icon,addChannelOption}) => {
+const SidebarOption = ({ title, Icon, addChannelOption }) => {
+   
+    const addChannel = () => {
+        const channelName = prompt('Please enter the Channel Name');
+        if(channelName){
+            db.collection('rooms').add({
+                name:channelName
+            })
+        }
+    };
+    const selectChannel = () => {
+
+    };
+
     return (
-       <SidebarOptionContainer>
-            {Icon && <Icon fontsize="small" style={{padding:10}}/>}
+        <SidebarOptionContainer onClick={addChannelOption ? addChannel : selectChannel}>
+            {Icon && <Icon fontsize="small" style={{ padding: 10 }} />}
 
-            {Icon? (
+            {Icon ? (
                 <h3>{title}</h3>
-            ):(
+            ) : (
                 <SidebarOptionChannel>
+                    {
+                        console.log(title)
+                    }
                     <span>#</span>{title}
                 </SidebarOptionChannel>
             )}
-       </SidebarOptionContainer>
+        </SidebarOptionContainer>
     );
 };
 
 export default SidebarOption;
 
-const SidebarOptionContainer =styled.div`
+const SidebarOptionContainer = styled.div`
     display: flex;
     font-size: 12px;
     align-items: center;
@@ -38,4 +55,6 @@ const SidebarOptionContainer =styled.div`
 `;
 
 
-const SidebarOptionChannel =styled.div``;
+const SidebarOptionChannel = styled.div`
+    color: white;
+`;

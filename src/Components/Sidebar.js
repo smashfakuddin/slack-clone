@@ -4,32 +4,48 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord'
 import CreateIcon from '@material-ui/icons/Create'
 import SidebarOption from './SidebarOption';
 import { Add, Apps, BookmarkBorder, Drafts, ExpandLess, ExpandMore, FileCopy, Inbox, InsertComment, PeopleAlt } from '@material-ui/icons';
+import { useCollection } from 'react-firebase-hooks/firestore';
+import { db } from '../firebase';
+
 const Sidebar = () => {
+    const [channels, loading, error] = useCollection(db.collection("rooms"));
+
     return (
         <SidebarContainer>
             <SidebarHeader>
                 <SidebarInfo>
                     <h2>Dev HQ</h2>
                     <h3>
-                    <FiberManualRecordIcon/>
+                        <FiberManualRecordIcon />
                     S M Ashfak Uddin
                     </h3>
                 </SidebarInfo>
-                <CreateIcon/>
+                <CreateIcon />
             </SidebarHeader>
 
-            <SidebarOption Icon={InsertComment} title='Threads'/>
-            <SidebarOption Icon={Inbox} title='Mentions & Reactions'/>
-            <SidebarOption Icon={Drafts} title='Saved items'/>
-            <SidebarOption Icon={BookmarkBorder} title='Channel browser'/>
-            <SidebarOption Icon={PeopleAlt} title='People & user groups'/>
-            <SidebarOption Icon={Apps} title='Apps'/>
-            <SidebarOption Icon={FileCopy} title='file browser'/>
-            <SidebarOption Icon={ExpandLess} title='Show less'/>
+            <SidebarOption Icon={InsertComment} title='Threads' />
+            <SidebarOption Icon={Inbox} title='Mentions & Reactions' />
+            <SidebarOption Icon={Drafts} title='Saved items' />
+            <SidebarOption Icon={BookmarkBorder} title='Channel browser' />
+            <SidebarOption Icon={PeopleAlt} title='People & user groups' />
+            <SidebarOption Icon={Apps} title='Apps' />
+            <SidebarOption Icon={FileCopy} title='file browser' />
+            <SidebarOption Icon={ExpandLess} title='Show less' />
             <hr />
-            <SidebarOption Icon={ExpandMore} title='Show More'/>
+            <SidebarOption Icon={ExpandMore} title='Channels' />
             <hr />
-            <SidebarOption Icon ={Add} addChannelOption title='Add Channel'/>
+            <SidebarOption Icon={Add} addChannelOption title='Add Channel' />
+
+            {channels?.docs.map(doc => 
+                // console.log(doc.data().name, doc.id)
+                <SidebarOption
+                    key={doc.id}
+                    id={doc.id}
+                    addChannelOption
+                    title={doc.data().name}
+                />
+
+            )}
         </SidebarContainer>
     );
 };
@@ -43,6 +59,10 @@ const SidebarContainer = styled.div`
     border-top: 1px solid #49274b;
     max-width: 240px;
     margin-top: 60px;
+    >hr{
+        margin: 10px 0;
+        border: 1px solid #49274b;
+    }
 `;
 
 const SidebarHeader = styled.div`
