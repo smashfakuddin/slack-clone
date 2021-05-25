@@ -15,7 +15,7 @@ const Chat = () => {
     const [roomDetails] = useDocument(
         roomId && db.collection('rooms').doc(roomId)
     )
-    const [roomMessages,loading] = useCollection(roomId &&
+    const [roomMessages, loading] = useCollection(roomId &&
         db
             .collection("rooms")
             .doc(roomId)
@@ -23,50 +23,53 @@ const Chat = () => {
             .orderBy("timestamp", "asc")
     );
 
-        useEffect(()=>{
-                chatRef?.current?.scrollIntoView({
-                    behavior:"smooth",
-                });
-        },[roomId,loading])
+    useEffect(() => {
+        chatRef?.current?.scrollIntoView({
+            behavior: "smooth",
+        });
+    }, [roomId, loading])
 
     return (
         <ChatContainer>
-            <>
-                <Header>
-                    <HeaderLeft>
-                        <h4><strong>#{roomDetails?.data().name}</strong></h4>
-                        <StarBorderOutlined />
-                    </HeaderLeft>
-
-                    <HeaderRight>
-                        <p>
-                            <InfoOutlined />Details
-                    </p>
-                    </HeaderRight>
-                </Header>
-
-                <ChatMessages>
-                    {roomMessages?.docs.map(doc => {
-                        const { message, timestamp, user, userImage } = doc.data();
-                        return (
-                            <Message
-                                key={doc.id}
-                                user={user}
-                                message={message}
-                                timestamp={timestamp}
-                                userImage={userImage}
-
-                            />
-                        )
-                    }
-                    )}
-                    <ChatBottom ref={chatRef} />
-                </ChatMessages>
-                <ChatInput
-                    chatRef={chatRef}
-                    channelName={roomDetails?.data().name}
-                    channelId={roomId} />
-            </>
+            {roomDetails && roomMessages&&(
+                     <>
+                     <Header>
+                         <HeaderLeft>
+                             <h4><strong>#{roomDetails?.data().name}</strong></h4>
+                             <StarBorderOutlined />
+                         </HeaderLeft>
+     
+                         <HeaderRight>
+                             <p>
+                                 <InfoOutlined />Details
+                         </p>
+                         </HeaderRight>
+                     </Header>
+     
+                     <ChatMessages>
+                         {roomMessages?.docs.map(doc => {
+                             const { message, timestamp, user, userImage } = doc.data();
+                             return (
+                                 <Message
+                                     key={doc.id}
+                                     user={user}
+                                     message={message}
+                                     timestamp={timestamp}
+                                     userImage={userImage}
+     
+                                 />
+                             )
+                         }
+                         )}
+                         <ChatBottom ref={chatRef} />
+                     </ChatMessages>
+                     <ChatInput
+                         chatRef={chatRef}
+                         channelName={roomDetails?.data().name}
+                         channelId={roomId} />
+                 </>
+            )}
+           
         </ChatContainer>
     );
 };
