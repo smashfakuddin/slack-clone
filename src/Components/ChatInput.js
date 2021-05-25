@@ -50,6 +50,7 @@ const ChatInputContainer = styled.div`
        display: flex;
        justify-content: center;
      }
+
      > form > input {
       position: fixed;
       bottom: 30px;
@@ -59,6 +60,7 @@ const ChatInputContainer = styled.div`
       padding: 20px;
       outline: none;
      }
+     
      > form > button {
          display: none;
      }

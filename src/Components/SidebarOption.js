@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { enterRoom } from '../features/appSlice';
 import { db } from '../firebase';
 
-const SidebarOption = ({ title, Icon, addChannelOption,id }) => {
+const SidebarOption = ({ title, Icon, addChannelOption, id }) => {
     const dispatch = useDispatch();
 
     const addChannel = () => {
@@ -16,9 +16,9 @@ const SidebarOption = ({ title, Icon, addChannelOption,id }) => {
         }
     };
     const selectChannel = () => {
-        if(id){
+        if (id) {
             dispatch(enterRoom({
-                roomId:id,
+                roomId: id,
             }))
         }
     };
@@ -46,13 +46,16 @@ const SidebarOptionContainer = styled.div`
     align-items: center;
     padding-left: 2px;
     cursor: pointer;
+    
     :hover{
         opacity:0.9;
         background-color: #340c36;
     }
+
     >h3 {
         font-weight: 500;
     }
+
     >h3 >span>{
         padding: 15px;
     }
@@ -62,6 +65,7 @@ const SidebarOptionContainer = styled.div`
 const SidebarOptionChannel = styled.h3`
     padding: 10px 0;
     font-weight: 300;
+    
     > span{
         margin: 0px 20px;
     }

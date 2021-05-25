@@ -18,10 +18,7 @@ function App() {
       <AppLoading>
         <AppLoadingContents>
           <img src="https://cdn.mos.cms.futurecdn.net/SDDw7CnuoUGax6x9mTo7dd.jpg" alt="" />
-          <Spinner
-            name="ball-spin-fade-loader"
-            color="purple"
-            fadeIn='none'
+          <Spinner name="ball-spin-fade-loader" color="purple" fadeIn='none'
           />
         </AppLoadingContents>
 
@@ -57,6 +54,7 @@ const AppBody = styled.div`
   display: flex;
   height: 100vh;
 `;
+
 const AppLoading = styled.div` 
   display: grid;
   place-items: center;
@@ -71,6 +69,7 @@ const AppLoadingContents = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items:center;
+  
   >img{
     height: 100px;
     padding: 20px;

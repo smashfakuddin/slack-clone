@@ -13,7 +13,7 @@ const Header = () => {
     return (
         <HeaderContainer>
             <HeaderLeft>
-                <HeaderAvatar onClick={()=>auth.signOut()} alt={user?.displayName} src={user?.photoURL} />
+                <HeaderAvatar onClick={() => auth.signOut()} alt={user?.displayName} src={user?.photoURL} />
                 <AccessTimeIcon />
             </HeaderLeft>
 

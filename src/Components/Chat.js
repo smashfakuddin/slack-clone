@@ -31,45 +31,45 @@ const Chat = () => {
 
     return (
         <ChatContainer>
-            {roomDetails && roomMessages&&(
-                     <>
-                     <Header>
-                         <HeaderLeft>
-                             <h4><strong>#{roomDetails?.data().name}</strong></h4>
-                             <StarBorderOutlined />
-                         </HeaderLeft>
-     
-                         <HeaderRight>
-                             <p>
-                                 <InfoOutlined />Details
+            {roomDetails && roomMessages && (
+                <>
+                    <Header>
+                        <HeaderLeft>
+                            <h4><strong>#{roomDetails?.data().name}</strong></h4>
+                            <StarBorderOutlined />
+                        </HeaderLeft>
+
+                        <HeaderRight>
+                            <p>
+                                <InfoOutlined /> Details
                          </p>
-                         </HeaderRight>
-                     </Header>
-     
-                     <ChatMessages>
-                         {roomMessages?.docs.map(doc => {
-                             const { message, timestamp, user, userImage } = doc.data();
-                             return (
-                                 <Message
-                                     key={doc.id}
-                                     user={user}
-                                     message={message}
-                                     timestamp={timestamp}
-                                     userImage={userImage}
-     
-                                 />
-                             )
-                         }
-                         )}
-                         <ChatBottom ref={chatRef} />
-                     </ChatMessages>
-                     <ChatInput
-                         chatRef={chatRef}
-                         channelName={roomDetails?.data().name}
-                         channelId={roomId} />
-                 </>
+                        </HeaderRight>
+                    </Header>
+
+                    <ChatMessages>
+                        {roomMessages?.docs.map(doc => {
+                            const { message, timestamp, user, userImage } = doc.data();
+                            return (
+                                <Message
+                                    key={doc.id}
+                                    user={user}
+                                    message={message}
+                                    timestamp={timestamp}
+                                    userImage={userImage}
+
+                                />
+                            )
+                        }
+                        )}
+                        <ChatBottom ref={chatRef} />
+                    </ChatMessages>
+                    <ChatInput
+                        chatRef={chatRef}
+                        channelName={roomDetails?.data().name}
+                        channelId={roomId} />
+                </>
             )}
-           
+
         </ChatContainer>
     );
 };
@@ -83,26 +83,32 @@ const ChatContainer = styled.div`
   overflow-y: scroll;
   margin-top: 60px;
 `;
+
 const Header = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 20px;
     border-bottom: 1px solid lightgray;
 `;
+
 const HeaderLeft = styled.div`
     display: flex;
     align-items: center;
+
     >h4{
         display: flex;
         text-transform: lowercase;
         margin-right: 10px;
     }
+
     >h4 >.MuiSvgIcon-root{
         margin-left: 10px;
         font-size: 18px;
     }
 `;
+
 const HeaderRight = styled.div`
+
     >p{
         display: flex;
         align-items: center;

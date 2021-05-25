@@ -19,7 +19,7 @@ const Sidebar = () => {
                     <h2>Dev HQ</h2>
                     <h3>
                         <FiberManualRecordIcon />
-                    {user?.displayName}
+                        {user?.displayName}
                     </h3>
                 </SidebarInfo>
                 <CreateIcon />
@@ -59,10 +59,12 @@ const SidebarContainer = styled.div`
     border-top: 1px solid #49274b;
     max-width: 240px;
     margin-top: 60px;
+
     >hr{
         margin: 10px 0;
         border: 1px solid #49274b;
     }
+
     ::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
@@ -74,6 +76,7 @@ const SidebarHeader = styled.div`
     border-bottom: 1px solid #49274b;
     padding-bottom: 10px;
     padding:13px;
+
     >.MuiSvgIcon-root{
         padding: 8px;
         color: #49274b;
@@ -92,12 +95,14 @@ const SidebarInfo = styled.div`
         margin-bottom: 5px;
 
     }
+
     >h3{
         display:flex;
         font-size: 13px;
         font-weight: 500;
         align-items: center;
     }
+    
     >h3>.MuiSvgIcon-root{
         font-size: 13px;
         margin-top: 1px;
